@@ -1,5 +1,13 @@
 // Display a listing of the resource.
-async function index(req, res) {}
+async function getNewReleases(req, res) {
+  try {
+    const response = await axios.get('https://api.spotify.com/v1/browse/new-releases');
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+
+}
 
 // Display the specified resource.
 async function show(req, res) {}
