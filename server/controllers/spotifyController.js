@@ -1,16 +1,45 @@
 const axios = require("axios");
-const { response } = require("express");
-const { getAuth } = require("../middlewares/getAuth");
-
+require("dotenv").config();
+const { getAuth } = require("./getAuth");
+const apiURL = process.env.SPOTIFY_API_URL;
 const token = getAuth();
 
 // Display a listing of the resource.
 async function getNewReleases(req, res) {
   try {
-    const response = await axios.get("https://api.spotify.com/v1/browse/new-releases", {
+    const response = await axios.get(`${apiURL}/browse/new-releases`, {
       headers: {
         Authorization: `Bearer ${await token}`,
-        /* "Content-Type": "application/x-www-form-urlencoded", */
+      },
+    });
+    res.json(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function getArtist(req, res) {
+  try {
+    const response = await axios.get(`${apiURL}/artists/0TnOYISbd1XYRBk9myaseg`, {
+      //id de ejemplo
+      headers: {
+        Authorization: `Bearer ${await token}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+    res.json(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function getArtistAlbum(req, res) {
+  try {
+    const response = await axios.get(`${apiURL}/artists/0TnOYISbd1XYRBk9myaseg/albums`, {
+      //id de ejemplo
+      headers: {
+        Authorization: `Bearer ${await token}`,
+        "Content-Type": "application/x-www-form-urlencoded",
       },
     });
     res.json(response.data);
@@ -42,8 +71,8 @@ async function destroy(req, res) {}
 
 module.exports = {
   getNewReleases,
-  show,
-  create,
+  getArtist,
+  getArtistAlbum,
   store,
   edit,
   update,
