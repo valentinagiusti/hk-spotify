@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { Form, Container, Button } from "react-bootstrap";
 import ArtistAlbums from "./ArtistAlbums";
 
 function SearchForm() {
   const [artist, setArtist] = useState("");
+  const [artistInfo, setArtistInfo] = useState("");
+  const navigate = useNavigate();
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -16,12 +19,14 @@ function SearchForm() {
         artist: artist,
       },
     });
-    setArtist(response.data);
+    setArtistInfo(response.data);
+    console.log(artistInfo);
   };
 
   return (
     <Container>
       <Form
+        method="POST"
         onSubmit={handleSearch}
         className="d-flex flex-row justify-content-center my-5"
       >
@@ -30,6 +35,8 @@ function SearchForm() {
             Search for your favourite artists!{" "}
           </Form.Label>
           <Form.Control
+            id="artist"
+            name="artist"
             value={artist}
             onChange={(ev) => setArtist(ev.target.value)}
             type="text"
@@ -40,7 +47,17 @@ function SearchForm() {
           Search
         </Button>
       </Form>
-      <ArtistAlbums artist={artist} />
+      {artistInfo && (
+        <div>
+          <h1>{artistInfo.artist_info.artists.items[0].name}</h1>
+          {artistInfo.albums_artist.items.map((album) => (
+            <div>
+              <img src={album.images[0].url} alt="ss" />
+              <p>{album.name}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </Container>
   );
 }

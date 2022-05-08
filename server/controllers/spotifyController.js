@@ -36,6 +36,7 @@ async function getNewReleases(req, res) {
 }
 
 async function searchForArtist(req, res) {
+  console.log(req.body.artist);
   try {
     const searchArtist = await axios.get(
       `${apiURL}/search?query=${req.body.artist}&type=artist&market=us&limit=1`,
