@@ -4,6 +4,23 @@ const { getAuth } = require("./getAuth");
 const apiURL = process.env.SPOTIFY_API_URL;
 const token = getAuth();
 
+function simpleStringify(object) {
+  var simpleObject = {};
+  for (var prop in object) {
+    if (!object.hasOwnProperty(prop)) {
+      continue;
+    }
+    if (typeof object[prop] == "object") {
+      continue;
+    }
+    if (typeof object[prop] == "function") {
+      continue;
+    }
+    simpleObject[prop] = object[prop];
+  }
+  return JSON.stringify(simpleObject); // returns cleaned up JSON
+}
+
 // Display a listing of the resource.
 async function getNewReleases(req, res) {
   try {
@@ -13,6 +30,33 @@ async function getNewReleases(req, res) {
       },
     });
     res.json(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function searchForArtist(req, res) {
+  try {
+    const searchArtist = await axios.get(
+      `${apiURL}/search?query=${req.body.artist}&type=artist&market=us&limit=1`,
+      {
+        headers: {
+          Authorization: `Bearer ${await token}`,
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      },
+    );
+
+    const artistId = searchArtist.data.artists.items[0].id;
+
+    const includeAlbums = await axios.get(`${apiURL}/artists/${artistId}/albums`, {
+      headers: {
+        Authorization: `Bearer ${await token}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+
+    res.json({ artist_info: searchArtist.data, albums_artist: includeAlbums.data });
   } catch (error) {
     console.error(error);
   }
@@ -73,7 +117,7 @@ module.exports = {
   getNewReleases,
   getArtist,
   getArtistAlbum,
-  store,
+  searchForArtist,
   edit,
   update,
   destroy,
