@@ -50,12 +50,15 @@ async function searchForArtist(req, res) {
 
     const artistId = searchArtist.data.artists.items[0].id;
 
-    const includeAlbums = await axios.get(`${apiURL}/artists/${artistId}/albums`, {
-      headers: {
-        Authorization: `Bearer ${await token}`,
-        "Content-Type": "application/x-www-form-urlencoded",
+    const includeAlbums = await axios.get(
+      `${apiURL}/artists/${artistId}/albums?market=UY&limit=50&offset=0`,
+      {
+        headers: {
+          Authorization: `Bearer ${await token}`,
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
       },
-    });
+    );
 
     res.json({ artist_info: searchArtist.data, albums_artist: includeAlbums.data });
   } catch (error) {

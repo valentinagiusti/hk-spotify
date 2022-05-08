@@ -47,15 +47,28 @@ function SearchForm() {
           Search
         </Button>
       </Form>
+      {!artistInfo && <p>No artists found.</p>}
       {artistInfo && (
         <div>
-          <h1>{artistInfo.artist_info.artists.items[0].name}</h1>
-          {artistInfo.albums_artist.items.map((album) => (
-            <div>
-              <img src={album.images[0].url} alt="ss" />
-              <p>{album.name}</p>
-            </div>
-          ))}
+          <div className="row g-4 text-center">
+            <h1>{artistInfo.artist_info.artists.items[0].name}</h1>
+
+            {artistInfo.albums_artist.items.map((album) => (
+              <ul
+                /*  key={artistInfo.id} */
+                className="col-md-3 d-flex justify-content-around"
+              >
+                <li>
+                  <img
+                    className="img-fluid"
+                    src={album.images[0].url}
+                    alt={artistInfo.artist_info.artists.items[0].name}
+                  />
+                  <p>{album.name}</p>
+                </li>
+              </ul>
+            ))}
+          </div>
         </div>
       )}
     </Container>
