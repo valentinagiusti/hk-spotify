@@ -1,12 +1,22 @@
+const axios = require("axios");
+const { response } = require("express");
+const { getAuth } = require("../middlewares/getAuth");
+
+const token = getAuth();
+
 // Display a listing of the resource.
 async function getNewReleases(req, res) {
   try {
-    const response = await axios.get('https://api.spotify.com/v1/browse/new-releases');
-    console.log(response);
+    const response = await axios.get("https://api.spotify.com/v1/browse/new-releases", {
+      headers: {
+        Authorization: `Bearer ${await token}`,
+        /* "Content-Type": "application/x-www-form-urlencoded", */
+      },
+    });
+    res.json(response.data);
   } catch (error) {
     console.error(error);
   }
-
 }
 
 // Display the specified resource.
@@ -31,7 +41,7 @@ async function destroy(req, res) {}
 // ...
 
 module.exports = {
-  index,
+  getNewReleases,
   show,
   create,
   store,
