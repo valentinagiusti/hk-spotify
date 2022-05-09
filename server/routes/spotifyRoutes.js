@@ -4,6 +4,7 @@ const {
   getArtist,
   getArtistAlbum,
   searchForArtist,
+  storeRequest,
 } = require("../controllers/spotifyController");
 const spotifyRoutes = express.Router();
 

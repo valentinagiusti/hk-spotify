@@ -1,38 +1,45 @@
+:root {
+  --main-color: #4daf52;
+}
+
+body {
+  background-color: #111010;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#form-label,
+h3 {
+  color: var(--main-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#form-button {
+  background-color: var(--main-color);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+html,
+body {
+  height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+body > footer {
+  position: sticky;
+  top: 100vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.img-album {
+  transition: transform 450ms;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.img-album:hover {
+  transform: scale(1.08);
+  border: #00d154 solid 0.08rem;
+}
+.footer-link:hover {
+  text-decoration: none;
+  color: #4daf52;
 }

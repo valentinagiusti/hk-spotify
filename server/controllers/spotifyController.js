@@ -1,25 +1,9 @@
 const axios = require("axios");
+const { Request } = require("../models/Request");
 require("dotenv").config();
 const { getAuth } = require("./getAuth");
 const apiURL = process.env.SPOTIFY_API_URL;
 const token = getAuth();
-
-function simpleStringify(object) {
-  var simpleObject = {};
-  for (var prop in object) {
-    if (!object.hasOwnProperty(prop)) {
-      continue;
-    }
-    if (typeof object[prop] == "object") {
-      continue;
-    }
-    if (typeof object[prop] == "function") {
-      continue;
-    }
-    simpleObject[prop] = object[prop];
-  }
-  return JSON.stringify(simpleObject); // returns cleaned up JSON
-}
 
 // Display a listing of the resource.
 async function getNewReleases(req, res) {
@@ -65,6 +49,11 @@ async function searchForArtist(req, res) {
     console.error(error);
   }
 }
+
+/* 
+var ip = req.headers['x-forwarded-for'] ||
+     req.socket.remoteAddress ||
+     null;  */
 
 async function getArtist(req, res) {
   try {
@@ -122,7 +111,6 @@ module.exports = {
   getArtist,
   getArtistAlbum,
   searchForArtist,
-  edit,
   update,
   destroy,
 };

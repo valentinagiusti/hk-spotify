@@ -1,25 +1,25 @@
 module.exports = (sequelize, Model, DataTypes) => {
-  class User extends Model {}
+  class Request extends Model {}
 
-  User.init(
+  Request.init(
     {
       id: {
         type: DataTypes.BIGINT.UNSIGNED,
         primaryKey: true,
         autoIncrement: true,
       },
-      firstname: {
+      userip: {
         type: DataTypes.STRING,
       },
-      lastname: {
+      artist: {
         type: DataTypes.STRING,
       },
     },
     {
       sequelize,
-      modelName: "user",
+      modelName: "request",
     },
   );
 
-  return User;
+  return Request;
 };

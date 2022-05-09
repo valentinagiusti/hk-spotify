@@ -11,12 +11,12 @@ const sequelize = new Sequelize(
   },
 );
 
-const User = require("./User")(sequelize, Model, DataTypes);
+const Request = require("./Request")(sequelize, Model, DataTypes);
 
 // Luego de definir los modelos, se pueden establecer relaciones
 // entre los mismos...
 
 module.exports = {
   sequelize,
-  User,
+  Request,
 };

@@ -20,7 +20,7 @@
     "nodemon": "^2.0.16",
     "qs": "^6.10.3",
     "request": "^2.88.2",
-    "sequelize": "^6.6.5",
+    "sequelize": "^6.19.0",
     "sqlite3": "^5.0.2"
   },
   "description": "Hack Academy - Ejemplo de MVC y Sequelize"

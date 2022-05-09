@@ -7,7 +7,6 @@ import ArtistAlbums from "./ArtistAlbums";
 function SearchForm() {
   const [artist, setArtist] = useState("");
   const [artistInfo, setArtistInfo] = useState("");
-  const navigate = useNavigate();
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -25,16 +24,13 @@ function SearchForm() {
 
   return (
     <Container>
-      <Form
-        method="POST"
-        onSubmit={handleSearch}
-        className="d-flex flex-row justify-content-center my-5"
-      >
-        <Form.Group className="d-flex flex-row align-items-center">
-          <Form.Label className="d-none">
-            Search for your favourite artists!{" "}
+      <Form method="POST" onSubmit={handleSearch} className=" my-5">
+        <Form.Group>
+          <Form.Label className="fs-4" id="form-label">
+            DISCOVER YOUR NEW FAVOURITE ALBUM TODAY!{" "}
           </Form.Label>
           <Form.Control
+            className="fs-5"
             id="artist"
             name="artist"
             value={artist}
@@ -43,28 +39,34 @@ function SearchForm() {
             placeholder="Insert artist's name or group here.."
           />
         </Form.Group>
-        <Button className=" " variant="primary" type="submit">
-          Search
+        <Button
+          className="my-3 w-25 fs-5"
+          variant="outline-success"
+          type="submit"
+        >
+          Search Artist
         </Button>
       </Form>
-      {!artistInfo && <p>No artists found.</p>}
+      {!artistInfo && <p className="text-white">No artists found.</p>}
       {artistInfo && (
         <div>
           <div className="row g-4 text-center">
-            <h1>{artistInfo.artist_info.artists.items[0].name}</h1>
+            <h1 className="text-white">
+              {artistInfo.artist_info.artists.items[0].name}'s albums
+            </h1>
 
             {artistInfo.albums_artist.items.map((album) => (
               <ul
-                /*  key={artistInfo.id} */
+                /*   key={artistInfo.id} */
                 className="col-md-3 d-flex justify-content-around"
               >
                 <li>
                   <img
-                    className="img-fluid"
+                    className="img-fluid img-album"
                     src={album.images[0].url}
                     alt={artistInfo.artist_info.artists.items[0].name}
                   />
-                  <p>{album.name}</p>
+                  <p className="text-white my-5 ">{album.name}</p>
                 </li>
               </ul>
             ))}
