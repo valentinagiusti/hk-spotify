@@ -1,9 +1,13 @@
 const axios = require("axios");
-const { Request } = require("../models/Request");
+const SearchedArtist = require("../models/SearchedArtist");
+/* const { Request } = require("../models/Request"); */
 require("dotenv").config();
 const { getAuth } = require("./getAuth");
 const apiURL = process.env.SPOTIFY_API_URL;
 const token = getAuth();
+const { PrismaClient } = require("@prisma/client");
+
+const prisma = new PrismaClient();
 
 // Display a listing of the resource.
 async function getNewReleases(req, res) {
@@ -20,8 +24,13 @@ async function getNewReleases(req, res) {
 }
 
 async function searchForArtist(req, res) {
-  console.log(req.body.artist);
   try {
+    await prisma.request.create({
+      data: {
+        artist: req.body.artist,
+        userip: await req.ip,
+      },
+    });
     const searchArtist = await axios.get(
       `${apiURL}/search?query=${req.body.artist}&type=artist&market=us&limit=1`,
       {
@@ -92,7 +101,16 @@ async function show(req, res) {}
 async function create(req, res) {}
 
 // Store a newly created resource in storage.
-async function store(req, res) {}
+/* async function storeRequest(req, res) {
+  console.log(req.body.artist + "hola");
+  try {
+    await Request.create({ artist: req.body.artist });
+
+    res.json({ message: "success" });
+  } catch (error) {
+    console.error(error);
+  }
+} */
 
 // Show the form for editing the specified resource.
 async function edit(req, res) {}
@@ -111,6 +129,6 @@ module.exports = {
   getArtist,
   getArtistAlbum,
   searchForArtist,
-  update,
+  /* storeRequest */
   destroy,
 };

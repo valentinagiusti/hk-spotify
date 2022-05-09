@@ -1,22 +1,16 @@
-const { Sequelize, Model, DataTypes } = require("sequelize");
+const { PrismaClient } = require("@prisma/client");
 
-const sequelize = new Sequelize(
-  process.env.DB_DATABASE, // Ej: hack_academy_db
-  process.env.DB_USERNAME, // Ej: root
-  process.env.DB_PASSWORD, // Ej: root
-  {
-    host: process.env.DB_HOST, // Ej: 127.0.0.1
-    dialect: process.env.DB_CONNECTION, // Ej: mysql
-    logging: false, // Para que no aparezcan mensajes en consola.
-  },
-);
+const prisma = new PrismaClient();
 
-const Request = require("./Request")(sequelize, Model, DataTypes);
+async function main() {
+  const allOrders = await prisma.request.findMany();
+  console.log(allOrders);
+}
 
-// Luego de definir los modelos, se pueden establecer relaciones
-// entre los mismos...
-
-module.exports = {
-  sequelize,
-  Request,
-};
+main()
+  .catch((e) => {
+    throw e;
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
