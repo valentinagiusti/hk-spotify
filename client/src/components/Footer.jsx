@@ -37,27 +37,27 @@ function Footer() {
                 }}
               />
               <p>
-                <Link className="footer-link text-secondary" to="#!">
+                <Link className="footer-link text-secondary " to="#!">
                   Sobre nosotros
                 </Link>
               </p>
               <p>
-                <Link className="footer-link text-secondary" to="#!">
+                <Link className="footer-link text-secondary " to="#!">
                   Blog
                 </Link>
               </p>
               <p>
-                <Link className="footer-link text-secondary" to="#!">
+                <Link className="footer-link text-secondary " to="#!">
                   Hack Cares
                 </Link>
               </p>
               <p>
-                <Link className="footer-link text-secondary" to="#!">
+                <Link className="footer-link text-secondary " to="#!">
                   Hack Pro
                 </Link>
               </p>
               <p>
-                <Link className="footer-link text-secondary" to="#!">
+                <Link className="footer-link text-secondary " to="#!">
                   Tienda
                 </Link>
               </p>
@@ -74,19 +74,19 @@ function Footer() {
                 }}
               />
               <p>
-                <Link className="footer-link text-secondary" to="#!">
+                <Link className="footer-link text-secondary " to="#!">
                   <FaInstagram className="me-2" />
                   Instagram
                 </Link>
               </p>
               <p>
-                <Link className="footer-link text-secondary" to="#!">
+                <Link className="footer-link text-secondary " to="#!">
                   <AiOutlineFacebook className="me-2" />
                   Facebook
                 </Link>
               </p>
               <p>
-                <Link className="footer-link text-secondary" to="#!">
+                <Link className="footer-link text-secondary " to="#!">
                   <AiOutlineLinkedin className="me-2" />
                   Linkedin
                 </Link>

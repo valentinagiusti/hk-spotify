@@ -44,10 +44,9 @@ function SearchForm() {
           variant="outline-success"
           type="submit"
         >
-          Search Artist
+          Search
         </Button>
       </Form>
-      {!artistInfo && <p className="text-white">No artists found.</p>}
       {artistInfo && (
         <div>
           <div className="row g-4 text-center">

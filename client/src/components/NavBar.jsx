@@ -15,6 +15,7 @@ function NavBar() {
             <Nav.Link href="#features">Home</Nav.Link>
           </Nav>
           <Nav>
+            <Nav.Link href="#deets">Searched Artists</Nav.Link>
             <Nav.Link href="#deets">About this project</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
               Contact

@@ -7,7 +7,7 @@ const client_secret = process.env.SPOTIFY_CLIENT_SECRET; // Your secret
 
 const auth_token = Buffer.from(`${client_id}:${client_secret}`, "utf-8").toString("base64");
 
-const getAuth = async (req, res) => {
+const getApiToken = async (req, res) => {
   try {
     //make post request to SPOTIFY API for access token, sending relavent info
     const token_url = process.env.SPOTIFY_URL_TOKEN;
@@ -29,5 +29,5 @@ const getAuth = async (req, res) => {
 };
 
 module.exports = {
-  getAuth,
+  getApiToken,
 };
