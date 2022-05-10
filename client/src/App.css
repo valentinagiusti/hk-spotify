@@ -11,7 +11,8 @@ body {
 }
 
 #form-label,
-h3 {
+h3,
+th {
   color: var(--main-color);
 }
 
@@ -38,8 +39,4 @@ body > footer {
 .img-album:hover {
   transform: scale(1.08);
   border: #00d154 solid 0.08rem;
-}
-.footer-link:hover {
-  text-decoration: none;
-  color: #4daf52;
 }

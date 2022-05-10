@@ -1,13 +1,12 @@
 const axios = require("axios");
 require("dotenv").config();
-const { getApiToken } = require("./getApiToken");
+
 const apiURL = process.env.SPOTIFY_API_URL;
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-// Display a listing of the resource.
-
+const { getApiToken } = require("./getApiToken");
 const token = getApiToken();
 
 async function searchForArtist(req, res) {
@@ -15,7 +14,7 @@ async function searchForArtist(req, res) {
     await prisma.request.create({
       data: {
         artist: req.body.artist,
-        userip: await req.ip,
+        userip: req.ip,
       },
     });
     const searchArtist = await axios.get(
@@ -46,6 +45,24 @@ async function searchForArtist(req, res) {
   }
 }
 
+async function getAll(req, res) {
+  try {
+    const allRequests = await prisma.request.findMany();
+    res.json({ allRequests: allRequests });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+/* getAll()
+  .catch((e) => {
+    throw e;
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  }); */
+
 module.exports = {
   searchForArtist,
+  getAll,
 };

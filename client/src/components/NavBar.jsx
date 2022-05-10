@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Container, NavDropdown, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import { ReactComponent as MusifyLogo } from "../images/Musify.svg";
 
 function NavBar() {
@@ -12,10 +12,10 @@ function NavBar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">Searched Artists</Nav.Link>
+            <Nav.Link href="/searched-artists">Searched Artists</Nav.Link>
             <Nav.Link href="#deets">About this project</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
               Contact

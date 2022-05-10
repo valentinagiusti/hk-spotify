@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
 import ArtistAlbums from "./components/ArtistAlbums";
 import Footer from "./components/Footer";
+import SearchedArtists from "./components/SearchedArtists";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/searched-artists" element={<SearchedArtists />} />
       </Routes>
       <Footer />
     </div>
