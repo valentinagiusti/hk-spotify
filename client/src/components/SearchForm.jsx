@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Form, Container, Button, Spinner } from "react-bootstrap";
 import ArtistAlbums from "./ArtistAlbums";
@@ -45,7 +45,7 @@ function SearchForm() {
         </Form.Group>
         <Button
           className="my-3 w-25 fs-5"
-          variant="outline-success"
+          variant="outline-light"
           type="submit"
         >
           Search

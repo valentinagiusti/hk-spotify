@@ -1,5 +1,5 @@
 :root {
-  --main-color: #4daf52;
+  --main-color: #913efe;
 }
 
 body {
@@ -38,5 +38,5 @@ body > footer {
 
 .img-album:hover {
   transform: scale(1.08);
-  border: #00d154 solid 0.08rem;
+  border: var(--main-color) solid 0.08rem;
 }

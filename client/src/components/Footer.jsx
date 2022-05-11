@@ -16,7 +16,7 @@ function Footer() {
                 className="mb-4 mt-0 d-inline-block mx-auto"
                 style={{
                   width: "60px",
-                  backgroundColor: "#00d154",
+                  backgroundColor: "#7c2ae8",
                   height: "2px",
                 }}
               />
@@ -32,13 +32,13 @@ function Footer() {
                 className="mb-4 mt-0 d-inline-block mx-auto"
                 style={{
                   width: "60px",
-                  backgroundColor: "#00d154",
+                  backgroundColor: "#7c2ae8",
                   height: "2px",
                 }}
               />
               <p>
                 <Link className="footer-link text-secondary " to="#!">
-                  Sobre nosotros
+                  Information
                 </Link>
               </p>
               <p>
@@ -48,7 +48,7 @@ function Footer() {
               </p>
               <p>
                 <Link className="footer-link text-secondary " to="#!">
-                  Hack Cares
+                  We Care
                 </Link>
               </p>
               <p>
@@ -58,7 +58,7 @@ function Footer() {
               </p>
               <p>
                 <Link className="footer-link text-secondary " to="#!">
-                  Tienda
+                  Store
                 </Link>
               </p>
             </div>
@@ -69,7 +69,7 @@ function Footer() {
                 className="mb-4 mt-0 d-inline-block mx-auto"
                 style={{
                   width: "60px",
-                  backgroundColor: "#00d154",
+                  backgroundColor: "#7c2ae8",
                   height: "2px",
                 }}
               />
@@ -99,7 +99,7 @@ function Footer() {
                 className="mb-4 mt-0 d-inline-block mx-auto"
                 style={{
                   width: "60px",
-                  backgroundColor: "#00d154",
+                  backgroundColor: "#7c2ae8",
                   height: "2px",
                 }}
               />
