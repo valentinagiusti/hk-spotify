@@ -21,11 +21,19 @@ Notas 🗒
 Se valorará el buen uso de git (commits, branches, etc.)
 Se pueden utilizar librerías extra, tanto de frontend como de backend
 
-DEMO
-
-https://hackflix-vale.vercel.app/
-
 # Getting Started with Create React App
+
+Para poder ejecutar el proyecto correctamente debe posocionarse con la terminal en las carpetas server y client por separado y correr npm i. 
+Luego, en ambas carpetas se debe realizar una copia del env.example y rellenar con sus datos. En el .enn del  server, deberá rellenar con su propia id y secret de la API de Spotify, click aquí para obtener sus credenciales : https://developer.spotify.com/.
+
+Tambié debe cerar previamente una base de datos relacional MySQL con el nombre que prefiera, y que esta coincida con la que inserse en el .env
+
+Una vez rellenado el .env,  posicionarse en la carpeta server "node server.js"
+
+Ejecutado esto, se posiciona en la carpeta client y ejecuta "npm start"
+
+Y listo! ya puedes descubrir álbumes nuevos de tus artistas favoritos!
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
