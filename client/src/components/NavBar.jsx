@@ -16,10 +16,6 @@ function NavBar() {
           </Nav>
           <Nav>
             <Nav.Link href="/searched-artists">Searched Artists</Nav.Link>
-            <Nav.Link href="#deets">About this project</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              Contact
-            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

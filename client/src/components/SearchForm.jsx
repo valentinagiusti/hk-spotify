@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Form, Container, Button } from "react-bootstrap";
+import { Form, Container, Button, Spinner } from "react-bootstrap";
 import ArtistAlbums from "./ArtistAlbums";
 
 function SearchForm() {
   const [artist, setArtist] = useState("");
   const [artistInfo, setArtistInfo] = useState("");
+  const [albums, setAlbums] = useState("");
+  const [load, setLoad] = useState(false);
 
   const handleSearch = async (e) => {
     e.preventDefault();
+    setLoad(true);
     console.log(artist);
     const response = await axios({
       method: "POST",
@@ -18,7 +21,11 @@ function SearchForm() {
         artist: artist,
       },
     });
-    setArtistInfo(response.data);
+    setArtistInfo(response.data.artist);
+    setAlbums(response.data.albums);
+    console.log(albums);
+    console.log(artistInfo);
+    setLoad(false);
   };
 
   return (
@@ -29,6 +36,7 @@ function SearchForm() {
             DISCOVER YOUR NEW FAVOURITE ALBUM TODAY!{" "}
           </Form.Label>
           <Form.Control
+            disabled={load}
             className="fs-5"
             id="artist"
             name="artist"
@@ -46,7 +54,12 @@ function SearchForm() {
           Search
         </Button>
       </Form>
-      <ArtistAlbums artistInfo={artistInfo} />
+      {load && (
+        <Spinner animation="border mx-auto" role="status" variant="success">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      )}
+      <ArtistAlbums artistInfo={artistInfo} albums={albums} />
     </Container>
   );
 }

@@ -1,6 +1,6 @@
 const axios = require("axios");
 require("dotenv").config();
-
+const _ = require("lodash");
 const apiURL = process.env.SPOTIFY_API_URL;
 
 const { PrismaClient } = require("@prisma/client");
@@ -29,17 +29,27 @@ async function searchForArtist(req, res) {
 
     const artistId = searchArtist.data.artists.items[0].id;
 
-    const includeAlbums = await axios.get(
-      `${apiURL}/artists/${artistId}/albums?market=UY&limit=50&offset=0`,
-      {
-        headers: {
-          Authorization: `Bearer ${await token}`,
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
+    const includeAlbums = await axios.get(`${apiURL}/artists/${artistId}/albums?market=UY`, {
+      headers: {
+        Authorization: `Bearer ${await token}`,
+        "Content-Type": "application/x-www-form-urlencoded",
       },
-    );
+    });
 
-    res.json({ artist_info: searchArtist.data, albums_artist: includeAlbums.data });
+    const albumIds = includeAlbums.data.items.map((album) => album.id);
+
+    const response = await axios.get(`https://api.spotify.com/v1/albums`, {
+      params: { ids: albumIds.join(",") },
+      headers: {
+        Authorization: "Bearer " + (await token),
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+
+    res.json({
+      albums: _.orderBy(response.data.albums, ["popularity"], ["desc"]),
+      artist: searchArtist.data.artists,
+    });
   } catch (error) {
     console.error(error);
   }
@@ -53,14 +63,6 @@ async function getAll(req, res) {
     console.error(error);
   }
 }
-
-/* getAll()
-  .catch((e) => {
-    throw e;
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  }); */
 
 module.exports = {
   searchForArtist,

@@ -2,7 +2,6 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
-import ArtistAlbums from "./components/ArtistAlbums";
 import Footer from "./components/Footer";
 import SearchedArtists from "./components/SearchedArtists";
 
