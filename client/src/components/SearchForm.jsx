@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { Form, Container, Button, Spinner } from "react-bootstrap";
 import ArtistAlbums from "./ArtistAlbums";
 
@@ -16,15 +15,13 @@ function SearchForm() {
     console.log(artist);
     const response = await axios({
       method: "POST",
-      url: "http://localhost:8888/search-artist",
+      url: `${process.env.REACT_APP_API_URL}/search-artist`,
       data: {
         artist: artist,
       },
     });
     setArtistInfo(response.data.artist);
     setAlbums(response.data.albums);
-    console.log(albums);
-    console.log(artistInfo);
     setLoad(false);
   };
 

@@ -9,7 +9,7 @@ function SearchedArtists() {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(
-        `http://localhost:8888/searched-artists`
+        `${process.env.REACT_APP_API_URL}/searched-artists`
       );
 
       setSearchedList(data.allRequests);
