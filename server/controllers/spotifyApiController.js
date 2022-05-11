@@ -40,7 +40,7 @@ async function searchForArtist(req, res) {
 
     const albumIds = includeAlbums.data.items.map((album) => album.id);
     //with all ids search for the albums
-    const response = await axios.get(`https://api.spotify.com/v1/albums`, {
+    const response = await axios.get(`${apiURL}/albums`, {
       params: { ids: albumIds.join(",") },
       headers: {
         Authorization: "Bearer " + (await token),

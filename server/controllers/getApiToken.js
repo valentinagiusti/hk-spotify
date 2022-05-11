@@ -4,7 +4,7 @@ const qs = require("qs");
 const client_id = process.env.SPOTIFY_API_ID; // Your client id
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET; // Your secret
 
-const auth_token = Buffer.from(`${client_id}:${client_secret}`, "utf-8").toString("base64");
+const token = Buffer.from(`${client_id}:${client_secret}`, "utf-8").toString("base64");
 
 const getApiToken = async (req, res) => {
   try {
@@ -14,7 +14,7 @@ const getApiToken = async (req, res) => {
 
     const response = await axios.post(token_url, data, {
       headers: {
-        Authorization: `Basic ${auth_token}`,
+        Authorization: `Basic ${token}`,
         "Content-Type": "application/x-www-form-urlencoded",
       },
     });
