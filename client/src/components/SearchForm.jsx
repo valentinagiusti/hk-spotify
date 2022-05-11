@@ -52,8 +52,8 @@ function SearchForm() {
         </Button>
       </Form>
       {load && (
-        <Spinner animation="border mx-auto" role="status" variant="success">
-          <span className="visually-hidden">Loading...</span>
+        <Spinner animation="border mx-auto" role="status" variant="light">
+          <span className="text-white">Loading...</span>
         </Spinner>
       )}
       <ArtistAlbums artistInfo={artistInfo} albums={albums} />
