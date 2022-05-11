@@ -28,7 +28,7 @@ Luego, en ambas carpetas se debe realizar una copia del env.example y rellenar c
 
 Tambié debe cerar previamente una base de datos relacional MySQL con el nombre que prefiera, y que esta coincida con la que inserse en el .env
 
-Una vez rellenado el .env,  posicionarse en la carpeta server "node server.js"
+Una vez rellenado el .env,  posicionarse en la carpeta server con la terminal y ejecutar "node server.js"
 
 Ejecutado esto, se posiciona en la carpeta client y ejecuta "npm start"
 
