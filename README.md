@@ -1,7 +1,7 @@
 
 # Getting Started!
 
-Para poder ejecutar el proyecto correctamente debe posocionarse con la terminal en las carpetas server y client por separado y correr npm i. 
+Para poder ejecutar el proyecto correctamente, debe posicionarse con la terminal en las carpetas server y client por separado y correr npm i. 
 Luego, en ambas carpetas se debe realizar una copia del env.example y rellenar con sus datos. En el .enn del  server, deberá rellenar con su propia id y secret de la API de Spotify, click aquí para obtener sus credenciales : https://developer.spotify.com/.
 
 Tambié debe cerar previamente una base de datos relacional MySQL con el nombre que prefiera, y que esta coincida con la que inserse en el .env
