@@ -1,6 +1,5 @@
 const axios = require("axios");
 const qs = require("qs");
-require("dotenv").config();
 
 const client_id = process.env.SPOTIFY_API_ID; // Your client id
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET; // Your secret
