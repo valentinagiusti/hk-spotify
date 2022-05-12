@@ -53,7 +53,7 @@ function SearchForm() {
       </Form>
       {load && (
         <Spinner animation="border mx-auto" role="status" variant="light">
-          <span className="text-white">Loading...</span>
+          <span className="visually-hidden">Loading...</span>
         </Spinner>
       )}
       <ArtistAlbums artistInfo={artistInfo} albums={albums} />
