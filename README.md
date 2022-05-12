@@ -11,7 +11,7 @@ This web app allows you to search your favourite artist's albums provided by the
  
 ## Deployment
 
-To start this project positionate with the terminal on the server folder
+To start this project locate your terminal on the server folder
 
 ```bash
   npm start
