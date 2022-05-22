@@ -54,6 +54,9 @@ async function searchForArtist(req, res) {
     });
   } catch (error) {
     console.error(error);
+    res.json({
+      error: "No artists found.",
+    });
   }
 }
 //get all searches from database

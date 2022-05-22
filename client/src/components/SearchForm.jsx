@@ -7,12 +7,13 @@ function SearchForm() {
   const [artist, setArtist] = useState("");
   const [artistInfo, setArtistInfo] = useState("");
   const [albums, setAlbums] = useState("");
+  const [error, setError] = useState("");
   const [load, setLoad] = useState(false);
 
   const handleSearch = async (e) => {
     e.preventDefault();
     setLoad(true);
-    console.log(artist);
+
     const response = await axios({
       method: "POST",
       url: `${process.env.REACT_APP_API_URL}/search-artist`,
@@ -23,6 +24,7 @@ function SearchForm() {
     setArtistInfo(response.data.artist);
     setAlbums(response.data.albums);
     setLoad(false);
+    setError(response.data.error);
   };
 
   return (
@@ -56,6 +58,7 @@ function SearchForm() {
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       )}
+      {error && <p className="text-white">{error}</p>}
       <ArtistAlbums artistInfo={artistInfo} albums={albums} />
     </Container>
   );
